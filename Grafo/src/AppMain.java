@@ -30,8 +30,7 @@ public class AppMain {
 	 * */
 	  static void readFile(String filename) throws IOException {
 
-			 Reader fileReader = new FileReader(filename);
-			 Scanner reader = new Scanner(fileReader);
+			 Scanner reader = new Scanner(new FileReader(filename));
 			
 			 String currentLine = reader.next();
 			
@@ -79,9 +78,7 @@ public class AppMain {
 					listaArestas.add(currentAresta);
 					
 				}		
-			}	
-
-			fileReader.close();
+			}
 			reader.close();
 		}
 }
