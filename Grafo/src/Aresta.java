@@ -1,30 +1,42 @@
 
-public class Aresta {
+public class Aresta<T> {
 	private double custo;
-	public Vertice<?> origem;
-	public Vertice<?> destino;
+	public Vertice<T> origem;
+	public Vertice<T> destino;
 	
+	
+	public Aresta(){
+		
+	}
+	
+    public Aresta(double custo, Vertice<T> origem, Vertice<T> destino){
+		this.custo = custo;
+		this.origem = origem;
+		this.destino = destino;
+	}
 	
 	public double getCusto() {
 		return custo;
 	}
-	public void setCusto(double custo) {
-		this.custo = custo;
-	}
-	public Vertice<?> getOrigem() {
+
+	public Vertice<T> getOrigem(){
 		return origem;
 	}
-	public void setOrigem(Vertice<?> origem) {
-		this.origem = origem;
-	}
-	public Vertice<?> getDestino() {
+
+	public Vertice<T> getDestino() {
 		return destino;
 	}
-	public void setDestino(Vertice<?> destino){
-		this.destino = destino;
-	}
-	public String toString(){
-		return this.custo+" "+this.origem.getID()+" "+this.destino.getID()+"\n";
-	}
+
+
+	 public String toString() {
+		    StringBuilder tmp = new StringBuilder("Aresta[de: ");
+		    tmp.append(origem.getID());
+		    tmp.append(",para: ");
+		    tmp.append(destino.getID());
+		    tmp.append(", custo: ");
+		    tmp.append(custo);
+		    tmp.append("]");
+		    return tmp.toString();
+		  }
 	
 }

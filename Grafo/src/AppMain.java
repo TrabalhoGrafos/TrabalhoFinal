@@ -5,9 +5,13 @@ import java.util.*;
 public class AppMain {
 
 	static Scanner sc = new Scanner(System.in);
-	static ArrayList<Vertice<?>> listaVertices = new ArrayList<Vertice<?>>();
-	static ArrayList<Aresta> listaArestas = new ArrayList<Aresta>();
+
+	static Grafo<?> grafo;
+	
+	
 	public static void main(String [] args){
+		
+		grafo = new Grafo<>();
 		
 		try {
 			readFile("grafo.txt");
@@ -16,43 +20,44 @@ public class AppMain {
 			e.printStackTrace();
 		}
 		
-		System.out.println(listaVertices.size());
-		
-		System.out.println(listaVertices);
-		
-        System.out.println(listaArestas.size());
-		
-		System.out.println(listaArestas);
+	    System.out.println(grafo);
+		System.out.println(grafo.getVertices());
+		System.out.println(grafo.findVerticeById(5));
 	}
 	
 	/**
 	 * Metodo que faz a leitura do arquivo
 	 * */
-	  static void readFile(String filename) throws IOException {
+	
+	static void readFile(String filename) throws IOException {
 
 			 Scanner reader = new Scanner(new FileReader(filename));
 			
+			 
 			 String currentLine = reader.next();
 			
 			 boolean read1 = true;
 			 boolean read2 = false;
-			
+			 		 
+			 Vertice currentVertice;
+			 
+			  
 			while(reader.hasNext())
 			{
-				Aresta currentAresta = new Aresta();
 				
 				 if(!reader.hasNext("arestas")&&read1){
-					Vertice<?> currentVertice = new Vertice<>();
+					
 				    currentLine = reader.next();
-				    System.out.println(currentLine);
+				   // System.out.println(currentLine);
 			
-				    currentVertice.setID(Integer.parseInt(currentLine));
+				    currentVertice = new Vertice<>(Integer.parseInt(currentLine));
 				    currentLine = reader.next();
 				    currentVertice.setCoordenadaX(Double.parseDouble(currentLine));
 					currentLine = reader.next();
 					currentVertice.setCoordenadaY(Double.parseDouble(currentLine));
 					
-					listaVertices.add(currentVertice);
+					//listaVertices.add(currentVertice);
+					grafo.addVertice(currentVertice);
 				
 				}
 				  if(reader.hasNext("arestas")){
@@ -64,20 +69,21 @@ public class AppMain {
 				else if(read2)
 				{
 					currentLine = reader.next();
-					Vertice<?> vertice1 = new Vertice<>();
-					Vertice<?> vertice2 = new Vertice<>();
-					
-					vertice1.setID(Integer.parseInt(currentLine));
-					currentAresta.origem = vertice1;
+				
+					int o = Integer.parseInt(currentLine);
+				
 					currentLine = reader.next();
-					vertice2.setID(Integer.parseInt(currentLine));
-					currentAresta.destino = vertice2;
+					int d = Integer.parseInt(currentLine);
+					
 					currentLine = reader.next();
-					currentAresta.setCusto(Double.parseDouble(currentLine));
+					double custo = Double.parseDouble(currentLine);
+					//currentAresta = new Aresta<>(custo, vertice1, vertice2);
 					
-					listaArestas.add(currentAresta);
-					
-				}		
+					grafo.addAresta(o,d, custo);
+					//listaArestas.add(currentAresta);
+				
+				}
+				  
 			}
 			reader.close();
 		}
