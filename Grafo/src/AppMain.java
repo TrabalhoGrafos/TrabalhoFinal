@@ -6,12 +6,12 @@ public class AppMain {
 
 	static Scanner sc = new Scanner(System.in);
 
-	static Grafo<?> grafo;
+	static Grafo grafo;
 	
 	
 	public static void main(String [] args){
 		
-		grafo = new Grafo<>();
+		grafo = new Grafo();
 		
 		try {
 			readFile("grafo.txt");
@@ -21,8 +21,14 @@ public class AppMain {
 		}
 		
 	    System.out.println(grafo);
-		System.out.println(grafo.getVertices());
 		System.out.println(grafo.findVerticeById(5));
+		
+		
+		
+		Utils.dijkstra(grafo, 1);
+		Utils.printMenorCaminho(grafo, 2);
+		
+		
 	}
 	
 	/**
@@ -50,7 +56,7 @@ public class AppMain {
 				    currentLine = reader.next();
 				   // System.out.println(currentLine);
 			
-				    currentVertice = new Vertice<>(Integer.parseInt(currentLine));
+				    currentVertice = new Vertice(Integer.parseInt(currentLine));
 				    currentLine = reader.next();
 				    currentVertice.setCoordenadaX(Double.parseDouble(currentLine));
 					currentLine = reader.next();

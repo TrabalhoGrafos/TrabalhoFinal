@@ -1,15 +1,15 @@
 
-public class Aresta<T> {
+public class Aresta {
 	private double custo;
-	public Vertice<T> origem;
-	public Vertice<T> destino;
+	public Vertice origem;
+	public Vertice destino;
 	
 	
 	public Aresta(){
 		
 	}
 	
-    public Aresta(double custo, Vertice<T> origem, Vertice<T> destino){
+    public Aresta(double custo, Vertice origem, Vertice destino){
 		this.custo = custo;
 		this.origem = origem;
 		this.destino = destino;
@@ -19,11 +19,15 @@ public class Aresta<T> {
 		return custo;
 	}
 
-	public Vertice<T> getOrigem(){
+	public void setOrigem(Vertice v){
+		this.origem = v;
+	}
+	
+	public Vertice getOrigem(){
 		return origem;
 	}
 
-	public Vertice<T> getDestino() {
+	public Vertice getDestino() {
 		return destino;
 	}
 

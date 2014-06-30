@@ -6,19 +6,19 @@
 
 import java.util.*;
 
-public class Grafo<T>{
+public class Grafo{
 	
-	 private List<Vertice<T>> listaVertices;
-	 private List<Aresta<T>> listaArestas;
+	 private List<Vertice> listaVertices;
+	 private List<Aresta> listaArestas;
 
 	  public Grafo(){
-		  listaVertices = new ArrayList<Vertice<T>>();
-		  listaArestas = new ArrayList<Aresta<T>>();
+		  listaVertices = new ArrayList<Vertice>();
+		  listaArestas = new ArrayList<Aresta>();
 		  
 	  }
 		  
 	  
-	  public Vertice<T> addVertice(Vertice<T> newVertice){
+	  public Vertice addVertice(Vertice newVertice){
 		    // adiciona no arraylist
 		    listaVertices.add(newVertice);
 		    return newVertice;
@@ -38,7 +38,7 @@ public class Grafo<T>{
 		      if (listaVertices.get(o).findAresta(listaVertices.get(d)) != null){
 		          return false;
 		      }else{
-		    Aresta<T> e = new Aresta<T>(c, listaVertices.get(o), listaVertices.get(d));
+		    Aresta e = new Aresta(c, listaVertices.get(o), listaVertices.get(d));
 		  
 		      listaVertices.get(o).addArestaVertice(e);
 		      listaVertices.get(d).addArestaVertice(e);
@@ -48,19 +48,19 @@ public class Grafo<T>{
 		  }
 	 
 
-	  public Vertice<T> getVertice(int n){
+	  public Vertice getVertice(int n){
 	    return listaVertices.get(n);
 	  }
 
 	  
-	  public List<Vertice<T>> getVertices(){
+	  public List<Vertice> getVertices(){
 		    return this.listaVertices;
 		  }
 	  
 	  
-	  public Vertice<T> findVerticeById(int id){
-		  Vertice<T> tmp = null;
-		    for (Vertice<T> v : listaVertices){
+	  public Vertice findVerticeById(int id){
+		  Vertice tmp = null;
+		    for (Vertice v : listaVertices){
 		      if (id == v.getID()){
 		    	  tmp = v;
 		        break;
@@ -80,7 +80,7 @@ public class Grafo<T>{
 	  
 	  public String toString(){
 		    StringBuilder tmp = new StringBuilder("Grafo [");
-		    for(Vertice<T> v : listaVertices)
+		    for(Vertice v : listaVertices)
 		      tmp.append(v);
 		    tmp.append(']');
 		    return tmp.toString();
