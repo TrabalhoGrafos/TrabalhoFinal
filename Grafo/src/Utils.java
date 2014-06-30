@@ -37,6 +37,7 @@ public abstract class Utils {
 		    {
 		     q.remove(v);
 		     v.setDistancia(distanciaPorEV);
+		     ev.visitar();
 		     v.setPai(ev);
 		     q.add(v);
 		     }
