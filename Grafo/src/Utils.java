@@ -11,8 +11,7 @@ public abstract class Utils {
 	}
 
 	public static void dijkstra(Grafo g, int ref) {
-
-		System.out.println("\nDIJKSTRA");
+		
 		// entra referencia, e eh feita a pesquisa no grafo
 		Vertice i = g.getVertice(ref);
 		// muda a distancia de infinito para zero do vertice

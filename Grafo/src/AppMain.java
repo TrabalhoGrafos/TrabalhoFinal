@@ -1,4 +1,5 @@
 import java.io.*;
+import java.io.ObjectInputStream.GetField;
 import java.util.*;
 
 public class AppMain {
@@ -10,7 +11,13 @@ public class AppMain {
 	public static void main(String[] args) {
 		grafo = new Grafo();
 		prepararFile();
-		trajetoria(2, 47);
+		
+		int origem = 49;
+		int destino = 9;
+		
+		dijkstra(origem, destino);
+		System.out.println("");
+		trajetoria(origem, destino);
 	}
 	
 	static void prepararFile(){
@@ -20,8 +27,6 @@ public class AppMain {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(grafo);
-		System.out.println(grafo.findVerticeById(5));
 	}
 
 	/**
@@ -77,14 +82,14 @@ public class AppMain {
 				// listaArestas.add(currentAresta);
 
 			}
-
 		}
 		reader.close();
 	}
 	
-	static void dijkstra(){
-		Utils.dijkstra(grafo, 1);
-		Utils.printMenorCaminho(grafo, 2);
+	static void dijkstra(int origem, int destino){
+		System.out.println("\nDijkstra");
+		Utils.dijkstra(grafo, origem);
+		Utils.printMenorCaminho(grafo, destino);
 	}
 	
 	static void printDistanciaEntrePontos(int origem, int destino){
@@ -95,6 +100,12 @@ public class AppMain {
 	
 	static void trajetoria(int origem, int destino){
 		Veiculo veiculo = new Veiculo();
-	}
+		Utils.dijkstra(grafo, origem);
+		Vertice vDestinto = grafo.getVertice(destino);
+		List<Vertice> trajeto = Utils.getMenorCaminho(vDestinto);
+		Trajetoria trajetoria = new Trajetoria(veiculo, trajeto);
+		System.out.println("Vertices: "+trajeto.size());
+		System.out.println(trajetoria);
+	} 
 
 }

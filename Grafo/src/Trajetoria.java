@@ -14,15 +14,21 @@ public class Trajetoria {
 		this.paradasAbastecimento = new ArrayList<Vertice>();
 		this.veiculo = veiculo;
 		this.trajeto = trajeto;
+		this.doTrajeto();
 	}
 	
 	private void doTrajeto(){
 		for(int i = 0; i < (this.trajeto.size()-1); i++){
-//			Vertice origem = thi
-//			this.trajeto.get(i);
-			//ALGORITMO
+			Vertice origem  = this.trajeto.get(i);
+			Vertice destino = this.trajeto.get(i+1);
+			double distancia = Utils.calculaDistanciaEntreVertices(origem, destino);
+			this.addParadas(calculaQuantidadeDeParadas(distancia));
+			if(this.simulaCombustivelVeiculo(this.calculaConsumo(distancia)) <= 1){
+				this.addParadaAbastecimento(origem);
+				this.veiculo.abastecer();
+			} 
+			this.veiculo.percorreDistancia(distancia);
 		}
-		this.toString();
 	}
 	
 	private void addParadas(int nParadas){
@@ -48,7 +54,22 @@ public class Trajetoria {
 	}
 	
 	public String toString(){
-		return "";
+		String infos = "";
+		infos += " Paradas para descanso: "+this.nParadas+ "\n";
+		infos += " Paradas para reabastecer (parada:vertice): ";
+		String paradasBastecer = "";
+		for(int i = 0; i < this.paradasAbastecimento.size(); i++){
+			if(i < (this.paradasAbastecimento.size()-1)){
+				paradasBastecer += (i+1)+":"+this.paradasAbastecimento.get(i).getID()+", ";
+			} else {
+				paradasBastecer += (i+1)+":"+this.paradasAbastecimento.get(i).getID();
+			}
+		}
+		if(paradasBastecer.isEmpty()){
+			paradasBastecer = "0";
+		}
+		infos += paradasBastecer;
+		return infos;
 	}
 	
 	

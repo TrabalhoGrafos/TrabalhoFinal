@@ -9,14 +9,14 @@ public class Veiculo {
 		this.consumo = 15;
 		this.autonomia = 600;
 		this.setVelocidadeMedia(80);
-		this.tanque = autonomia;
+		this.tanque = this.autonomia/this.getConsumo();
 	}
 	
 	public Veiculo(double consumo,double autonomia,double velocidadeMedia){
 		this.consumo = consumo;
 		this.autonomia = autonomia;
 		this.setVelocidadeMedia(velocidadeMedia);
-		this.tanque = autonomia;
+		this.tanque = this.autonomia/this.getConsumo();
 	}
 	
 	public void abastecer(){
@@ -24,7 +24,7 @@ public class Veiculo {
 	}
 	
 	public void percorreDistancia(double distancia){
-		this.tanque = tanque - (distancia/this.consumo);
+		this.tanque = tanque - (distancia/this.getConsumo());
 	}
 
 	public double getConsumo() {
