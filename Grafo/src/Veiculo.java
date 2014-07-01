@@ -1,4 +1,8 @@
-
+/**
+ * Classe que contem o veiculo com seus atributos
+ * 
+ *
+ */
 public class Veiculo {
 	private double consumo;
 	private double autonomia;

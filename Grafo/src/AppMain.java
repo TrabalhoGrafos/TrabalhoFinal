@@ -5,7 +5,7 @@ import java.util.*;
  * Classe principal do trabalho sobre grafos do prof. Rafael Jeffman
  * 
  * 
- * @authors Dennis Kaffer, ***, ***
+ * @authors Dennis Kaffer, Lucas Gutier, Vanderson Nunes, ***
  * */
 
 public class AppMain {
@@ -30,6 +30,9 @@ public class AppMain {
 		
 	}
 	
+	/**
+	 * Metodo que contem o caminho do arquivo de texto
+	 */
 	static void prepararFile(){
 		try {
 			readFile("grafo.txt");
@@ -95,22 +98,41 @@ public class AppMain {
 		reader.close();
 	}
 	
+	/**
+	 * Metodo que executa o algoritmo Dijkstra
+	 * @param origem
+	 * @param destino
+	 */
 	static void dijkstra(int origem, int destino){
 		System.out.println("\nDijkstra");
 		Utils.dijkstra(grafo, origem);
 		Utils.printMenorCaminho(grafo, destino);
 	}
 	
+	/**
+	 * Metodo que executa o caixeiro viajante
+	 * @param origem
+	 */
 	static void caixeiroViajante(int origem){
 		Utils.DFS(grafo, origem);
 	}
 	
+	/**
+	 * Metodo que imprime a distancia entre dois pontos
+	 * @param origem
+	 * @param destino
+	 */
 	static void printDistanciaEntrePontos(int origem, int destino){
 		Vertice v1 = grafo.getVertice(origem);
 		Vertice v2 = grafo.getVertice(destino);
 		System.out.print("Distancia entre "+origem+"(Origem) e "+destino+"(Destino): "+Utils.calculaDistanciaEntreVertices(v1, v2));
 	}
 	
+	/**
+	 * Metodo que insere a trajetoria a ser percorrida pelo GPS
+	 * @param origem
+	 * @param destino
+	 */
 	static void trajetoria(int origem, int destino){
 		Veiculo veiculo = new Veiculo();
 		Utils.dijkstra(grafo, origem);

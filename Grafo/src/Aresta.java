@@ -1,4 +1,7 @@
-
+/**
+ * Classe que contém os atributos das arestras
+ *
+ */
 public class Aresta {
 	
 	private double custo;
