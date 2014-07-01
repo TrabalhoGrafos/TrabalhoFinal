@@ -1,9 +1,11 @@
 
 public class Aresta {
+	
 	private double custo;
 	public Vertice origem;
 	public Vertice destino;
 	
+	private boolean visitado = false;
 	
 	public Aresta(){
 		
@@ -30,8 +32,20 @@ public class Aresta {
 	public Vertice getDestino() {
 		return destino;
 	}
+	
+	public boolean checkVisitado(){
+		return this.visitado;
+	}
 
+	public void visitar(){
+		 this.visitado = true;
+	}
+	
+	public void clearVisitado(){
+		this.visitado = false;
+	}
 
+	
 	 public String toString() {
 		    StringBuilder tmp = new StringBuilder("Aresta[de: ");
 		    tmp.append(origem.getID());
@@ -40,7 +54,7 @@ public class Aresta {
 		    tmp.append(", custo: ");
 		    tmp.append(custo);
 		    tmp.append("]");
+		    tmp.append("\n");
 		    return tmp.toString();
 		  }
-	
 }

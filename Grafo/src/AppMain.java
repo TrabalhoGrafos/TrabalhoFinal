@@ -1,6 +1,12 @@
 import java.io.*;
-import java.io.ObjectInputStream.GetField;
 import java.util.*;
+
+/**
+ * Classe principal do trabalho sobre grafos do prof. Rafael Jeffman
+ * 
+ * 
+ * @authors Dennis Kaffer, ***, ***
+ * */
 
 public class AppMain {
 
@@ -16,8 +22,12 @@ public class AppMain {
 		int destino = 9;
 		
 		dijkstra(origem, destino);
-		System.out.println("");
+	
+		caixeiroViajante(9);
+		System.out.println("\n");
 		trajetoria(origem, destino);
+		
+		
 	}
 	
 	static void prepararFile(){
@@ -31,6 +41,9 @@ public class AppMain {
 
 	/**
 	 * Metodo que faz a leitura do arquivo
+	 * 
+	 * @param filename-
+	 * 		nome do arquivo onde contem as informacoes para construcao do grafo
 	 * */
 
 	static void readFile(String filename) throws IOException {
@@ -49,15 +62,13 @@ public class AppMain {
 			if (!reader.hasNext("arestas") && read1) {
 
 				currentLine = reader.next();
-				// System.out.println(currentLine);
-
+			
 				currentVertice = new Vertice(Integer.parseInt(currentLine));
 				currentLine = reader.next();
 				currentVertice.setCoordenadaX(Double.parseDouble(currentLine));
 				currentLine = reader.next();
 				currentVertice.setCoordenadaY(Double.parseDouble(currentLine));
 
-				// listaVertices.add(currentVertice);
 				grafo.addVertice(currentVertice);
 
 			}
@@ -76,10 +87,8 @@ public class AppMain {
 
 				currentLine = reader.next();
 				double custo = Double.parseDouble(currentLine);
-				// currentAresta = new Aresta<>(custo, vertice1, vertice2);
 
 				grafo.addAresta(o, d, custo);
-				// listaArestas.add(currentAresta);
 
 			}
 		}
@@ -90,6 +99,10 @@ public class AppMain {
 		System.out.println("\nDijkstra");
 		Utils.dijkstra(grafo, origem);
 		Utils.printMenorCaminho(grafo, destino);
+	}
+	
+	static void caixeiroViajante(int origem){
+		Utils.DFS(grafo, origem);
 	}
 	
 	static void printDistanciaEntrePontos(int origem, int destino){

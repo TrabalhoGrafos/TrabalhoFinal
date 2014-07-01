@@ -6,8 +6,8 @@ public class Vertice implements Comparable<Vertice>{
 	private int ID;
 	private double coordenadaX = 0;
 	private double coordenadaY = 0;
-	private boolean visitado;
-	 private double distancia = Double.POSITIVE_INFINITY;
+	private boolean visitado = false;
+	private double distancia = Double.POSITIVE_INFINITY;
 
 	private ArrayList<Aresta> arestaEntrada;
 	private ArrayList<Aresta> arestaSaida;
@@ -50,15 +50,8 @@ public class Vertice implements Comparable<Vertice>{
 			this.distancia = distancia;
 		}
 		
-		public boolean checkVisitado(){
-			return this.visitado;
-		}
-		
-		public void visitar(){
-			this.visitado = true;
-		}
-		
 	
+		
 	 public boolean addArestaVertice(Aresta a) {
 		    if(a.getOrigem() == this){
 		    	arestaSaida.add(a);
@@ -102,6 +95,15 @@ public class Vertice implements Comparable<Vertice>{
 		    return todasArestas;
 		  }
 	  
+	  public ArrayList<Aresta> getArestasSaida(){
+		    return this.arestaSaida;
+		  }
+	  public Aresta getArestasSaidaRef(int i) {
+		    return arestaSaida.get(i);
+		  }
+	  public int getArestasCount() {
+		    return arestaSaida.size();
+		  }
 
 	public Vertice getPai() {
 		return pai;
@@ -110,7 +112,20 @@ public class Vertice implements Comparable<Vertice>{
 	public void setPai(Vertice pai) {
 		this.pai = pai;
 	}
-
+	
+	
+	public boolean checkVisitado(){
+		return this.visitado;
+	}
+	
+	public void visitar(){
+		this.visitado = true;
+	}
+	
+	public void clearVisitado(){
+		this.visitado = false;
+	}
+	
 	@Override
 	public int compareTo(Vertice o) {
 		// TODO Auto-generated method stub
@@ -146,5 +161,4 @@ public class Vertice implements Comparable<Vertice>{
 		    tmp.append('\n');
 		    return tmp.toString();
 		  }
-
 }
