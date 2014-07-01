@@ -3,6 +3,7 @@ import java.util.List;
 
 
 public class Trajetoria {
+	public static int LIMITE_DE_HORAS_DIRIGINDO = 3;
 	private int nParadas;
 	private List<Vertice> paradasAbastecimento;
 	private Veiculo veiculo;
@@ -32,9 +33,18 @@ public class Trajetoria {
 		this.paradasAbastecimento.add(v);
 	}
 	
+	private double simulaCombustivelVeiculo(double consumo){
+		return this.veiculo.getTanque() - consumo;
+	}
+	
 	private double calculaConsumo(double distancia){
 		double consumo = distancia/this.veiculo.getConsumo();
 		return consumo;
+	}
+	
+	private int calculaQuantidadeDeParadas(double distancia){
+		double horas = distancia/this.veiculo.getVelocidadeMedia();
+		return (int)horas/Trajetoria.LIMITE_DE_HORAS_DIRIGINDO;
 	}
 	
 	public String toString(){
