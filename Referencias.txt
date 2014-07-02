@@ -1,0 +1,10 @@
+Referências
+
+Caixeiro viajante:
+  http://www.zanuz.com/2007_10_01_archive.html
+
+Dijkstra:
+  http://www.ms.unimelb.edu.au/~moshe/620-261/dijkstra/dijkstra.html
+
+Grafo:
+  http://books.google.com.br/books?id=7ogOGQ9VMBAC&hl=pt-BR
