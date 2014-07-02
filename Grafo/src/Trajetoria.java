@@ -3,7 +3,7 @@ import java.util.List;
 
 /**
  * Classe que contem os atributos e metodos da trajetoria do GPS
- * 
+ * @author Vanderson Nunes
  * 
  */
 public class Trajetoria {
