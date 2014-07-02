@@ -39,9 +39,12 @@ public abstract class Utils {
 		while (!q.isEmpty()) {
 			// atribui o head da fila ao vertice ev
 			Vertice ev = q.poll();
-
+			
 			for (Aresta a : ev.getArestas()) {
 				Vertice v = a.getDestino();
+				//usando a distancia(X, Y) calculada entre os 2 vertices..
+				ev.setDistancia(calculaDistanciaEntreVertices(ev,v));
+			
 				double custo = a.getCusto();
 				double distanciaPorEV = ev.getDistancia() + custo;
 
@@ -53,6 +56,7 @@ public abstract class Utils {
 					q.add(v);
 				}
 			}
+			
 		}
 	}
 

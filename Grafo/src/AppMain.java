@@ -22,7 +22,8 @@ public class AppMain {
 		int destino = 9;
 		
 		dijkstra(origem, destino);
-	
+
+		
 		caixeiroViajante(9);
 		System.out.println("\n");
 		trajetoria(origem, destino);

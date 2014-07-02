@@ -130,8 +130,8 @@ public class Grafo{
 		    for (Aresta a : listaArestas)
 		      a.clearVisitado();
 		  }
-	  
-	  
+
+  
 	  public String toString(){
 		    StringBuilder tmp = new StringBuilder("Grafo [");
 		    for(Vertice v : listaVertices)
